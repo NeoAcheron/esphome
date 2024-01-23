@@ -9,7 +9,18 @@ namespace usb_device {
 
 static const char *const TAG = "usb_device";
 
-void UsbDevice::setup() { USB.begin(); }
+#define _manufacturer  "Corsair"
+#define _product  "Corsair Gaming K55 RGB Keyboard"
+#define _serial  "1234-5678"
+
+void UsbDevice::setup() { 
+  USB.manufacturerName(_manufacturer);
+  USB.productName(_product);
+  USB.serialNumber(_serial);
+  USB.VID(0x1B1C);
+  USB.PID(0x1B3D);
+  USB.begin(); 
+  }
 
 void UsbDevice::update() {
 #ifdef USE_BINARY_SENSOR
